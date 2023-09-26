@@ -38,12 +38,24 @@ export class MessagesService {
     .subscribe(this.updates)
     this.newMessages
       .subscribe(this.create)
+
+    this.markThreadAsRead.pipe(
+      map((thread: Thread) => {
+        return (messages: Message[]) => {
+          return messages.map((message: Message) => {
+            if(message.thread.id === thread.id) {
+              message.isRead = true
+            }
+            return message
+          })
+        }
+      })
+    )
+    .subscribe(this.updates)
   }
 
-  addMessage(newMessage: Message): void {
-    this.updates.next((messages: Message[]): Message[] => {
-      return messages.concat(newMessage);
-    });
+  addMessage(message: Message): void {
+    this.newMessages.next(message)
   }
 
   messagesForThreadUser(thread: Thread, user: User): Observable<Message> {
