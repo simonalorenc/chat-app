@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  Inject,
   Component,
   ElementRef,
   OnInit,
@@ -25,7 +26,7 @@ export class ChatWindowComponent implements OnInit {
   currentUser!: User;
 
   constructor(
-    public messageService: MessagesService,
+    public messagesService: MessagesService,
     public threadsService: ThreadsService,
     public UsersService: UsersService,
     public el: ElementRef
@@ -45,5 +46,34 @@ export class ChatWindowComponent implements OnInit {
         this.currentUser = user;
       }
     });
+
+    this.messages
+      .subscribe(
+        (messages: Array<Message>) => {
+          setTimeout(() => {
+            this.scrollToBottom
+          })
+        }
+      )
+  }
+
+  sendMessage(): void {
+    const m: Message = this.draftMessage
+    m.author = this.currentUser
+    m.thread = this.currentThread
+    m.isRead = true
+    this.messagesService.addMessage(m)
+    this.draftMessage = new Message()
+  }
+
+  onEnter(event:any): void {
+    this.sendMessage()
+    event.preventDefault()
+  }
+
+  scrollToBottom():void {
+    const scrollPane: any = this.el
+      .nativeElement.querySelector('.msg-container-base')
+    scrollPane.scrollTop = scrollPane.scrollHeight
   }
 }

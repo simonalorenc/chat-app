@@ -8,6 +8,10 @@ import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
 import { ChatThreadComponent } from './chat-thread/chat-thread.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
+import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { FormsModule } from '@angular/forms';
+import { FromNowPipe } from './from-now.pipe';
+import { ChatNavBarComponent } from './chat-nav-bar/chat-nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
     ChatThreadsComponent,
     ChatThreadComponent,
     ChatWindowComponent,
-    ChatPageComponent
+    ChatPageComponent,
+    ChatMessageComponent,
+    FromNowPipe,
+    ChatNavBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

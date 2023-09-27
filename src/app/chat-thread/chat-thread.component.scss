@@ -1,5 +1,13 @@
+.media {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(189, 200, 189);
+    margin: 5px;
+}
+
 .image {
     width: 100px;
     height: 100px;
-    background-color: pink;
+    background-color: rgb(240, 218, 222);
+    border: solid 2px rgb(122, 151, 122);
 }

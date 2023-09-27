@@ -1,0 +1,28 @@
+.chat-window-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0px;
+    right: 50px;
+    width: 250px;
+    height: 350px;
+    background-color: rgb(105, 181, 105);
+}
+
+.panel-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panel-footer {
+    display: flex;
+    
+}
+
+.panel-body{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    background-color: rgb(241, 241, 157);
+}
